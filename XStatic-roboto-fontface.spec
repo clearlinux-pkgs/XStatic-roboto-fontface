@@ -4,7 +4,7 @@
 #
 Name     : XStatic-roboto-fontface
 Version  : 0.4.3.2
-Release  : 1
+Release  : 2
 URL      : https://pypi.python.org/packages/source/X/XStatic-roboto-fontface/XStatic-roboto-fontface-0.4.3.2.tar.gz
 Source0  : https://pypi.python.org/packages/source/X/XStatic-roboto-fontface/XStatic-roboto-fontface-0.4.3.2.tar.gz
 Summary  : roboto-fontface 0.4.3 (XStatic packaging standard)
