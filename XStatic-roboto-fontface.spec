@@ -4,16 +4,18 @@
 #
 Name     : XStatic-roboto-fontface
 Version  : 0.5.0.0
-Release  : 10
+Release  : 11
 URL      : http://pypi.debian.net/XStatic-roboto-fontface/XStatic-roboto-fontface-0.5.0.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-roboto-fontface/XStatic-roboto-fontface-0.5.0.0.tar.gz
 Summary  : roboto-fontface 0.5.0 (XStatic packaging standard)
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: XStatic-roboto-fontface-python3
+Requires: XStatic-roboto-fontface-license
 Requires: XStatic-roboto-fontface-python
+BuildRequires : buildreq-distutils3
 BuildRequires : pbr
 BuildRequires : pip
-BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : setuptools
 
@@ -32,13 +34,31 @@ XStatic-roboto-fontface
         You can find more info about the xstatic packaging way in the package
         `XStatic`.
 
+%package license
+Summary: license components for the XStatic-roboto-fontface package.
+Group: Default
+
+%description license
+license components for the XStatic-roboto-fontface package.
+
+
 %package python
 Summary: python components for the XStatic-roboto-fontface package.
 Group: Default
+Requires: XStatic-roboto-fontface-python3
 Provides: xstatic-roboto-fontface-python
 
 %description python
 python components for the XStatic-roboto-fontface package.
+
+
+%package python3
+Summary: python3 components for the XStatic-roboto-fontface package.
+Group: Default
+Requires: python3-core
+
+%description python3
+python3 components for the XStatic-roboto-fontface package.
 
 
 %prep
@@ -49,15 +69,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1503089362
-python2 setup.py build -b py2
+export SOURCE_DATE_EPOCH=1532216063
 python3 setup.py build -b py3
 
 %install
-export SOURCE_DATE_EPOCH=1503089362
 rm -rf %{buildroot}
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+mkdir -p %{buildroot}/usr/share/doc/XStatic-roboto-fontface
+cp xstatic/pkg/roboto_fontface/data/LICENSE %{buildroot}/usr/share/doc/XStatic-roboto-fontface/xstatic_pkg_roboto_fontface_data_LICENSE
+python3 -tt setup.py build -b py3 install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -65,7 +84,13 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
+%files license
+%defattr(-,root,root,-)
+/usr/share/doc/XStatic-roboto-fontface/xstatic_pkg_roboto_fontface_data_LICENSE
+
 %files python
 %defattr(-,root,root,-)
-/usr/lib/python2*/*
+
+%files python3
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
