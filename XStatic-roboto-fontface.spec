@@ -4,7 +4,7 @@
 #
 Name     : XStatic-roboto-fontface
 Version  : 0.5.0.0
-Release  : 13
+Release  : 14
 URL      : http://pypi.debian.net/XStatic-roboto-fontface/XStatic-roboto-fontface-0.5.0.0.tar.gz
 Source0  : http://pypi.debian.net/XStatic-roboto-fontface/XStatic-roboto-fontface-0.5.0.0.tar.gz
 Summary  : roboto-fontface 0.5.0 (XStatic packaging standard)
